@@ -24,3 +24,66 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
+.gradient-border {
+  position: relative;
+  border-radius: 20px;
+  padding-top: 1px; 
+  /* padding-bottom: 0; */
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 17px; /* Height of the top border */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #5C93FF -16.75deg,
+    rgba(122, 215, 255, 0.45) 7.58deg,
+    #73A3FF 116.08deg,
+    rgba(102, 209, 255, 0.05) 178.34deg,
+    #83ADFF 251.48deg,
+    #5C93FF 343.25deg,
+    rgba(122, 215, 255, 0.45) 367.58deg
+  );
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  border-radius: 20px !important;
+
+  background: radial-gradient(
+    30.84% 62.22% at 50.1% 50%,
+    rgba(46, 51, 90, 0.5) 0%,
+    rgba(28, 27, 51, 0.1) 100%
+  );
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0px 10px 40px 0px #FFFFFF26,
+    0px 10px 10px 0px #0000001A,
+    0px 4px 4px 0px #0000000D,
+    inset 0px 8px 10px 0px #F6F9FF33;
+  padding: 16px;
+}
+
+
+
