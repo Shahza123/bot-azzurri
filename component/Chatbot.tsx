@@ -1,34 +1,28 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
-
 import { useChat } from "ai/react";
-
 import { Message as PreviewMessage } from "@/component/Message";
-
 import ModelInput from "@/component/ModalInput";
-
-
-
-
 import MultiModel from "@/component/Multimodel";
 import ChatNavbar from "@/component/ChatNavbar";
 
 interface Message {
+    id: string;
     role: 'user' | 'assistant';
     content: string;
-
-
 }
+
 interface OpenChatProps {
     setIsOpenChat: React.Dispatch<React.SetStateAction<boolean>>;
     isOpenChat: boolean
 }
 
 
-export default function ChatModel({ setIsOpenChat }: OpenChatProps) {
+export default function ChatModel({ setIsOpenChat, isOpenChat }: OpenChatProps) {
     const [conversation, setConversation] = useState<Message[]>([]);
 
     const { messages, input, setInput, isLoading, stop } = useChat();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isSending, setIsSending] = useState(false);
     const [botMessage, setBotMessage] = useState("");
 
@@ -48,21 +42,27 @@ export default function ChatModel({ setIsOpenChat }: OpenChatProps) {
         setIsSending(true);
         setBotMessage("");
 
-        const userMessage = { id: generateId(), role: 'user', content: input };
+        const userMessage: Message = {
+            id: generateId(),
+            role: 'user',
+            content: input,
+        };
+
         const staticBotResponse = "Hello! I'm your virtual assistant. How can I help you today?";
 
         try {
-            // Add user message to the conversation
+
             setConversation((prev) => [...prev, userMessage]);
 
             setInput("");
 
             // Simulate assistant response without API call
-            const assistantMessage = {
+            const assistantMessage: Message = {
                 id: generateId(),
                 role: 'assistant',
                 content: staticBotResponse,
             };
+
 
             // Optional: Simulate delay to mimic real interaction
             await new Promise((res) => setTimeout(res, 1000));
@@ -102,7 +102,8 @@ export default function ChatModel({ setIsOpenChat }: OpenChatProps) {
             <div className="bg-gradient-to-b from-black to-[#201A32] rounded-[8px] w-full h-full flex flex-col space-y-4">
 
                 <div className="flex-1 flex flex-col w-full h-full text-white rounded-[5px]">
-                    <ChatNavbar title="Ai Agent" setIsOpenChat={setIsOpenChat} />
+                    <ChatNavbar title="Ai Agent" setIsOpenChat={setIsOpenChat} isOpenChat={isOpenChat} />
+
 
                     <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-none scrollbar-hidden">
                         {conversation.length === 0 && !botMessage ? (

@@ -1,9 +1,6 @@
 import { useCallback, useRef } from 'react';
 import useWindowSize from '@/component/WindowSize';
-import { Button } from '@/component/ui/button';
-import { Paperclip, Send } from 'lucide-react';
-import { Textarea } from '@/component/ui/textarea';
-import { Separator } from './ui/separator';
+
 import Image from 'next/image';
 
 
@@ -26,18 +23,14 @@ const ModelInput: React.FC<ModelInputProps> = ({
   input,
   setInput,
   isLoading,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   stop,
   // messages,
   handleSubmit
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const { width } = useWindowSize();
-  // const [fileName, setFileName] = useState<string>('Choose CSV File');
-
-  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-  //   setFileName(file ? file.name : 'Choose CSV File');
-  // };
+ 
 
   const adjustHeight = () => {
     if (textareaRef.current) {

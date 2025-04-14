@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Chatbot from '@/component/Chatbot'
 import { ChevronDown, MessageSquare } from 'lucide-react'
-const page = () => {
+const Page = () => {
   const [isOpenChat, setIsOpenChat] = useState(false)
 
   useEffect(() => {
@@ -38,4 +38,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
