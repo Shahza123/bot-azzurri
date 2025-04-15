@@ -97,7 +97,7 @@ export default function ChatModel({ setIsOpenChat, isOpenChat }: OpenChatProps) 
     return (
 
         <div
-            className="p-[2px] rounded-[10px] bg-gradient-to-b from-red-600 via-green-500 to-pink-600 w-[380px] h-[85vh] flex items-center justify-center"
+            className="p-[2px] rounded-[10px] bg-gradient-to-b from-red-600 via-green-500 to-pink-600 md:w-[380px] w-full md:h-[85vh] h-screen flex items-center justify-center"
         >
             <div className="bg-gradient-to-b from-black to-[#201A32] rounded-[8px] w-full h-full flex flex-col space-y-4">
 

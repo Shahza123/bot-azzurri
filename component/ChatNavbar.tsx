@@ -21,12 +21,7 @@ const ChatNavbar: React.FC<ChatNavbarProps> = ({ title, setIsOpenChat, isOpenCha
 
 
     return (
-        <div className="px-4 py-3 h-[80px]
-
-  
-  text-white 
-  flex items-center 
-  rounded-tl-[10px] rounded-tr-[10px] justify-between rounded"
+        <div className="px-4 py-3 h-[80px] text-white flex items-center rounded-tl-[10px] rounded-tr-[10px] justify-between rounded"
             style={{ backgroundImage: "url('chatNavbarBg.png')" }}>
             <div className='flex items-center gap-[6px]'>
                 <div className="border rounded-full">

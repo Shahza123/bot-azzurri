@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import useWindowSize from '@/component/WindowSize';
 
 import Image from 'next/image';
@@ -30,7 +30,23 @@ const ModelInput: React.FC<ModelInputProps> = ({
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const { width } = useWindowSize();
- 
+
+  useEffect(() => {
+    const el = document.getElementById('horizontal-scroll');
+
+    if (el) {
+      const handleWheel = (e: WheelEvent) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          el.scrollLeft += e.deltaY;
+        }
+      };
+
+      el.addEventListener('wheel', handleWheel);
+
+      return () => el.removeEventListener('wheel', handleWheel);
+    }
+  }, []);
 
   const adjustHeight = () => {
     if (textareaRef.current) {
@@ -58,7 +74,23 @@ const ModelInput: React.FC<ModelInputProps> = ({
 
   return (
     <div className='gradient-border'>
-      <div className=' content '>
+
+
+      <div className='content'>
+        <div id="horizontal-scroll" className='flex  gap-[6.61px] max-w-[360px] overflow-x-auto whitespace-nowrap scrollbar-hidden'>
+          <div className='border inline-block opacity-90 rounded-tl-[9.92px]  rounded-tr-[9.92px]  rounded-br-[9.92px] rounded-bl-[0.4px] pt-[13.23px]  pr-[13.23px] pb-[9.92px] pl-[16.53px] cursor-pointer'>
+            <p className='text-[#E8EBF0] font-semibold text-[9.92px] leading-[100%] tracking-[0%]'>🤔 What service do you provide?</p>
+          </div>
+          <div className='border inline-block opacity-90 rounded-tl-[9.92px]  rounded-tr-[9.92px]  rounded-br-[9.92px] rounded-bl-[0.4px] pt-[13.23px]  pr-[13.23px] pb-[9.92px] pl-[16.53px] cursor-pointer'>
+            <p className='text-[#E8EBF0] font-semibold text-[9.92px] leading-[100%] tracking-[0%]'>💰 Pricing</p>
+          </div>
+          <div className='border inline-block opacity-90 rounded-tl-[9.92px]  rounded-tr-[9.92px]  rounded-br-[9.92px] rounded-bl-[0.4px] pt-[13.23px]  pr-[13.23px] pb-[9.92px] pl-[16.53px] cursor-pointer'>
+            <p className='text-[#E8EBF0] font-semibold text-[9.92px] leading-[100%] tracking-[0%]'>🙋‍♂️ Do you offer custom solution?</p>
+          </div>
+          <div className='border inline-block opacity-90 rounded-tl-[9.92px]  rounded-tr-[9.92px]  rounded-br-[9.92px] rounded-bl-[0.4px] pt-[13.23px]  pr-[13.23px] pb-[9.92px] pl-[16.53px] cursor-pointer'>
+            <p className='text-[#E8EBF0] font-semibold text-[9.92px] leading-[100%] tracking-[0%]'>🙋‍♂️ what&apos;s your compnay location?</p>
+          </div>
+        </div>
         <div className="border   rounded-tl-[9.92px] rounded-tr-[9.92px] rounded-br-[9.92px] rounded-bl-[0.4px] relative h-[51.07px] mt-4">
           <textarea
             placeholder="Type your message here..."

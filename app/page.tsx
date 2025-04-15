@@ -26,8 +26,8 @@ const Page = () => {
 
       {isOpenChat && (
         <div
-          className={` fixed right-[20px]   ${isOpenChat
-            ? 'transition-all duration-700  bottom-[72px]'
+          className={` fixed md:right-[20px] right-0   ${isOpenChat
+            ? 'transition-all duration-700  md:bottom-[72px] bottom-0'
             : 'bottom-0'
             }`}
         >
